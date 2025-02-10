@@ -6,15 +6,15 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/06 16:15:56 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:10:15 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "../libft/libft.h"
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "../libs/libft/libft.h"
+# include "../libs/MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 
 typedef struct s_point
