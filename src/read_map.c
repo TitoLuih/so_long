@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:35:12 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/11 15:27:01 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:47:36 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int	read_map(t_game *game, char *map_name)
 	if (fd < 0)
 		return (ft_printf("Error, no se pudo leer el mapa\n"), EXIT_FAILURE);
 	close (fd);
-	if (read_line(line, game, fd, map_name) == 1)
+	if (read_lines(line, game, fd, map_name) == 1)
 		return (free(line), EXIT_FAILURE);
 }
