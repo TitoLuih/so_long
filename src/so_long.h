@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/10 13:10:15 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:13:46 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ typedef struct s_game
 	mlx_texture_t	*t_wall;
 	mlx_image_t		*i_wall;
 }	t_game;
+
+int	read_map(t_game *game, char *map_name);
 
 #endif

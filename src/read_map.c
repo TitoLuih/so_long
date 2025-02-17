@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:35:12 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/11 18:47:36 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:12:28 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	free_map(t_game *game)
 {
+	
 }
 
 static int	read_column(char *line, t_game *game, int fd, char *map_name)
