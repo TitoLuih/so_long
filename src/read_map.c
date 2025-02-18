@@ -6,15 +6,32 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:35:12 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/12 16:12:28 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:05:36 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(t_game *game)
+void	the_freer(char	**free_me)
 {
-	
+	int	i;
+
+	i = 0;
+	while (free_me[i])
+	{
+		free(free_me[i]);
+		i++;
+	}
+	free(free_me);
+}
+
+void	free_all(t_game *game)
+{
+	if (game->map)
+		the_freer(game->map);
+	if (game->map_copy)
+		the_freer(game->map_copy);
+	free(game);
 }
 
 static int	read_column(char *line, t_game *game, int fd, char *map_name)
@@ -22,9 +39,8 @@ static int	read_column(char *line, t_game *game, int fd, char *map_name)
 	int	index;
 
 	index = 0;
-	fd = open(map_name, 0);
 	line = get_next_line(fd);
-	if (index < game->lines)
+	while (index < game->lines)
 	{
 		game->columns = ft_strlen(line);
 		if (line[game->columns - 1] != " \n")
@@ -42,12 +58,12 @@ static int	read_column(char *line, t_game *game, int fd, char *map_name)
 	game->columns--;
 	game->map[index] = NULL;
 	game->map_copy[index] = NULL;
-	return (close(fd), free(line), EXIT_SUCCESS);
+	free(line);
+	return (EXIT_SUCCESS);
 }
 
 static int	read_lines(char *line, t_game *game, int fd, char *map_name)
 {
-	fd = open(map_name, 0);
 	line = get_next_line(fd);
 	if (line == NULL)
 		return (ft_printf("Fallo al leer el mapa"), EXIT_FAILURE);
@@ -61,7 +77,6 @@ static int	read_lines(char *line, t_game *game, int fd, char *map_name)
 	game->map_copy = ft_calloc (game->lines + 1, sizeof(char *));
 	if (!game->map || game->map_copy)
 		return (free(line), EXIT_FAILURE);
-	close(fd);
 	if (read_column(line, game, fd, map_name) == 1)
 		return (free(line), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
@@ -76,7 +91,6 @@ int	read_map(t_game *game, char *map_name)
 	fd = open(map_name, 0);
 	if (fd < 0)
 		return (ft_printf("Error, no se pudo leer el mapa\n"), EXIT_FAILURE);
-	close (fd);
 	if (read_lines(line, game, fd, map_name) == 1)
 		return (free(line), EXIT_FAILURE);
 }
