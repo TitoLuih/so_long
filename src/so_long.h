@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/12 16:13:46 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:20:54 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ typedef struct s_game
 	char			**map_copy;
 	int				lines;
 	int				columns;
-	int				c;
-	int				e;
-	int				p;
+	int				coin;
+	int				exit;
+	int				player;
 	t_point			p_position;
+	t_point			e_position;
 	int				c_copy;
 	int				e_copy;
 	int				moves;
