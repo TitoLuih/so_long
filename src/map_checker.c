@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/20 15:30:41 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:16:30 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	check_wall(t_game *game, int i, int j)
 		else
 			if (game->map[j][0] != '1' && game->map[j][game->columns -1] != '1')
 				return (EXIT_FAILURE);
-			else if (game->map[j][i] != '0' && game->map[j][i] != '1'
+		else if (game->map[j][i] != '0' && game->map[j][i] != '1'
 				&& game->map[j][i] != 'C' && game->map[j][i] != 'P'
 				&& game->map[j][i] != 'E')
-				return (EXIT_FAILURE);
-			else
-				object_checker(game, i, j);
+			return (EXIT_FAILURE);
+		else
+			object_checker(game, i, j);
 		i++;
 	}
 	if (game->player != 1 || game->exit != 1 || game->coin == 0)
@@ -86,7 +86,7 @@ int	way_checker(t_game *game)
 		y = game->e_position.y;
 		if (game->map[x + 1][y] == '1' || game->map[x - 1][y] == '1'
 			|| game->map[x][y + 1] == '1' || game->map[x][y - 1] == '1' )
-				return (EXIT_FAILURE);
+			return (EXIT_FAILURE);
 		else
 			return (EXIT_SUCCESS);
 	}
@@ -98,5 +98,4 @@ int	map_checker(t_game *game)
 		return (ft_printf ("Error, the map is not rectangular"), EXIT_FAILURE);
 	if (check_wall(game, 0, 1) == 1)
 		return (EXIT_FAILURE);
-
 }

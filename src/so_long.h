@@ -6,10 +6,9 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/19 16:20:54 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:40:58 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -34,17 +33,14 @@ typedef struct s_game
 	int				player;
 	t_point			p_position;
 	t_point			e_position;
-	int				c_copy;
-	int				e_copy;
 	int				moves;
-	t_point			local_exit;
 	mlx_t			*mlx;
 	mlx_texture_t	*t_coin;
 	mlx_image_t		*i_coin;
 	mlx_texture_t	*t_floor;
 	mlx_image_t		*i_floor;
 	mlx_texture_t	*t_player_r;
-	mlx_image_t		*i_player_r;
+	mlx_image_t		*i_player_r;	
 	mlx_texture_t	*t_player_l;
 	mlx_image_t		*i_player_l;
 	mlx_texture_t	*t_open_exit;
