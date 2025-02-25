@@ -6,11 +6,11 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/25 16:23:03 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:33:00 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "so_long.h"
 
 static void	init_struct(t_game *game)
 {
