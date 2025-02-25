@@ -1,7 +1,0 @@
-/home/lruiz-to/Desktop/github/publicProjects/so_long/libs/MLX42/build/CMakeFiles/mlx42.dir
-/home/lruiz-to/Desktop/github/publicProjects/so_long/libs/MLX42/build/CMakeFiles/edit_cache.dir
-/home/lruiz-to/Desktop/github/publicProjects/so_long/libs/MLX42/build/CMakeFiles/rebuild_cache.dir
-/home/lruiz-to/Desktop/github/publicProjects/so_long/libs/MLX42/build/CMakeFiles/list_install_components.dir
-/home/lruiz-to/Desktop/github/publicProjects/so_long/libs/MLX42/build/CMakeFiles/install.dir
-/home/lruiz-to/Desktop/github/publicProjects/so_long/libs/MLX42/build/CMakeFiles/install/local.dir
-/home/lruiz-to/Desktop/github/publicProjects/so_long/libs/MLX42/build/CMakeFiles/install/strip.dir
