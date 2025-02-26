@@ -6,78 +6,86 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:35:12 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/25 18:34:29 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:41:39 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	the_freer(char	**free_me)
+void	free_maps(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (free_me[i])
-	{
-		free(free_me[i]);
-		i++;
-	}
-	free(free_me);
-}
-
-void	free_all(t_game *game)
-{
 	if (game->map)
-		the_freer(game->map);
+	{
+		while (i <= game->lines)
+		{
+			free(game->map[i]);
+			i++;
+		}
+		free(game->map);
+	}
+	i = 0;
 	if (game->map_copy)
-		the_freer(game->map_copy);
+	{
+		while (i <= game->lines)
+		{
+			free(game->map_copy[i]);
+			i++;
+		}
+		free(game->map_copy);
+	}
 	free(game);
 }
 
-static int	read_column(char *line, t_game *game, int fd, char *map_name)
+static int	readm_columns(char *line, t_game *game, int fd, char *map_name)
 {
-	int	index;
+	int	i;
 
-	index = 0;
+	i = 0;
+	fd = open(map_name, 0);
 	line = get_next_line(fd);
-	while (index < game->lines)
+	while (i < game->lines)
 	{
 		game->columns = ft_strlen(line);
-		if (line[game->columns - 1] != '\n')
+		if (line[game->columns -1] != '\n')
 			game->columns++;
-		game->map[index] = ft_calloc(game->columns, sizeof(char *));
-		game->map_copy[index] = ft_calloc(game->columns, sizeof(char *));
+		game->map[i] = ft_calloc(game->columns, sizeof(char *));
+		game->map_copy[i] = ft_calloc(game->columns, sizeof(char *));
 		if (!game->map || !game->map_copy)
 			return (free(line), EXIT_FAILURE);
-		ft_strlcpy(game->map[index], line, game->columns);
-		ft_strlcpy(game->map_copy[index], line, game->columns);
+		ft_strlcpy(game->map[i], line, game->columns);
+		ft_strlcpy(game->map_copy[i], line, game->columns);
 		free(line);
 		line = get_next_line(fd);
-		index++;
+		i++;
 	}
 	game->columns--;
-	game->map[index] = NULL;
-	game->map_copy[index] = NULL;
-	free(line);
-	return (EXIT_SUCCESS);
+	game->map[i] = NULL;
+	game->map_copy[i] = NULL;
+	return (close(fd), free(line), EXIT_SUCCESS);
 }
 
-static int	read_lines(char *line, t_game *game, int fd, char *map_name)
+static int	readm_lines(char *line, t_game *game, int fd, char *map_name)
 {
+	fd = open(map_name, 0);
 	line = get_next_line(fd);
 	if (line == NULL)
-		return (ft_printf("Fallo al leer el mapa"), EXIT_FAILURE);
+		return (ft_printf("ERROR: El mapa esta vacio"), EXIT_FAILURE);
 	while (line != NULL)
 	{
 		game->lines++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	game->map = ft_calloc (game->lines + 1, sizeof(char *));
-	game->map_copy = ft_calloc (game->lines + 1, sizeof(char *));
-	if (!game->map || game->map_copy)
+	free(line);
+	game->map = ft_calloc(game->lines + 1, sizeof(char *));
+	game->map_copy = ft_calloc(game->lines + 1, sizeof(char *));
+	if (!game->map || !game->map_copy)
 		return (free(line), EXIT_FAILURE);
-	if (read_column(line, game, fd, map_name) == 1)
+	close(fd);
+	if (readm_columns(line, game, fd, map_name) == 1)
 		return (free(line), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -90,9 +98,9 @@ int	read_map(t_game *game, char *map_name)
 	line = NULL;
 	fd = open(map_name, 0);
 	if (fd < 0)
-		return (ft_printf("Error, no se pudo leer el mapa\n"), EXIT_FAILURE);
-	if (read_lines(line, game, fd, map_name) == 1)
-		return (free(line), EXIT_FAILURE);
-	if (read_column(line, game, fd, map_name) == 1)
-		return (free(line), EXIT_FAILURE);
+		return (ft_printf("Error: No se pudo abrir el mapa\n"), EXIT_FAILURE);
+	close(fd);
+	if (readm_lines(line, game, fd, map_name) == 1)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

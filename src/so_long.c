@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/26 12:39:56 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:22:24 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (ft_printf("ERROR: Faltan argumentos"), EXIT_FAILURE);
-	if (format_checker(argv[1]) == EXIT_FAILURE)
+	if (ext_checker(argv[1]) == EXIT_FAILURE)
 		return (ft_printf("ERROR: Formato de mapa incorrecto"), EXIT_FAILURE);
 	g = ft_calloc(1, sizeof(t_game));
-	init(g);
+	init_struct(g);
 	if (read_map(g, argv[1]) == EXIT_FAILURE)
 		return (free_maps(g), EXIT_FAILURE);
-	if (check_map(g) == 1)
+	if (map_checker(g) == 1)
 		return (free_maps(g), EXIT_FAILURE);
 	g->mlx = mlx_init(50 * g->columns, 50 * g->lines, "SO_LONG", false);
 	if (!g->mlx)
 		return (free_maps(g), EXIT_FAILURE);
-	if (texture_to_image(g) == 1 || image_to_window(g) == 1)
+	if (text_to_img(g) == 1 || image_to_window(g) == 1)
 		return (free_maps(g), ft_printf("Error imágenes\n"), EXIT_FAILURE);
 	mlx_key_hook(g->mlx, &player_move, g);
 	mlx_loop(g->mlx);

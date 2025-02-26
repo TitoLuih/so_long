@@ -15,6 +15,7 @@ SRCS =	./src/map_checker.c\
 		./src/img_to_window.c\
 		./src/read_map.c\
 		./src/so_long.c\
+		./src/movement.c\
 		./src/text_to_img.c\
 
 SRCDIR = src/

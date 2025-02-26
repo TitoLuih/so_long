@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:58:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/25 16:19:09 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:43:23 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	text_to_img(t_game *game)
 	game->i_closed_exit = mlx_texture_to_image(game->mlx, game->t_closed_exit);
 	game->i_wall = mlx_texture_to_image(game->mlx, game->t_wall);
 	clean_textures(game);
-	if (image_error(game) == 1)
+	if (img_error(game) == 1)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/25 18:30:30 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:45:55 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ int	check_wall(t_game *game, int i, int j)
 			j++;
 		}
 		if (j == 0 || j == game->lines - 1)
+		{
 			if (game->map[j][i] != '1' && game->map[j][i] != '\n')
 				return (EXIT_FAILURE);
-		else
-			if (game->map[j][0] != '1' && game->map[j][game->columns -1] != '1')
+		}
+		else if (game->map[j][0] != '1' && game->map[j][game->columns -1] != '1')
 				return (EXIT_FAILURE);
 		else if (game->map[j][i] != '0' && game->map[j][i] != '1'
 				&& game->map[j][i] != 'C' && game->map[j][i] != 'P'
