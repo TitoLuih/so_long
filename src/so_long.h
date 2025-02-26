@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/26 12:22:29 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:39:51 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,13 @@ typedef struct s_game
 	mlx_image_t		*i_wall;
 }	t_game;
 
-int	read_map(t_game *game, char *map_name);
-int	image_to_window(t_game *g);
+
+int		read_map(t_game *game, char *map_name);
+int		format_checker(char *map_name);
+void	free_maps(t_game *game);
+int		check_map(t_game *game);
+int		texture_to_image(t_game *game);
+int		image_to_window(t_game *game);
+void	player_move(mlx_key_data_t keydata, void *param);
 
 #endif
