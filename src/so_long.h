@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/25 16:40:58 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:22:29 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ typedef struct s_game
 }	t_game;
 
 int	read_map(t_game *game, char *map_name);
+int	image_to_window(t_game *g);
 
 #endif
