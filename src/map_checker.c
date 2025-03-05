@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/26 12:45:55 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:45:20 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	way_checker(t_game *game)
 
 int	map_checker(t_game *game)
 {
-	if (game-> lines != game->columns)
+	if (game-> lines == game->columns)
 		return (ft_printf ("Error, the map is not rectangular"), EXIT_FAILURE);
 	if (check_wall(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
