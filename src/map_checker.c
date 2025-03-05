@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/05 11:45:20 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:51:10 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,19 @@ int	check_wall(t_game *game, int i, int j)
 			i = 0;
 			j++;
 		}
+		/*creo que el fallo esta aqui pero no estoy seguro
 		if (j == 0 || j == game->lines - 1)
 		{
-			if (game->map[j][i] != '1' && game->map[j][i] != '\n')
-				return (EXIT_FAILURE);
+			if (game->map[j][i] != '1')
+				return (ft_printf("puta madre"), EXIT_FAILURE);
 		}
-		else if (game->map[j][0] != '1' && game->map[j][game->columns -1] != '1')
-				return (EXIT_FAILURE);
-		else if (game->map[j][i] != '0' && game->map[j][i] != '1'
-				&& game->map[j][i] != 'C' && game->map[j][i] != 'P'
-				&& game->map[j][i] != 'E')
-			return (EXIT_FAILURE);
+		else */
+		if (game->map[j][0] != '1' && game->map[j][game->columns -1] != '1')
+				return (ft_printf("aaaaaaaaa"), EXIT_FAILURE);
+		else if (game->map[j][i] != '0' || game->map[j][i] != '1'
+				|| game->map[j][i] != 'C' || game->map[j][i] != 'P'
+				|| game->map[j][i] != 'E')
+			return (ft_printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),EXIT_FAILURE);
 		else
 			object_checker(game, i, j);
 		i++;
@@ -95,7 +97,7 @@ int	way_checker(t_game *game)
 
 int	map_checker(t_game *game)
 {
-	if (game-> lines == game->columns)
+	if (game->lines == game->columns)
 		return (ft_printf ("Error, the map is not rectangular"), EXIT_FAILURE);
 	if (check_wall(game, 0, 0) == 1)
 		return (EXIT_FAILURE);

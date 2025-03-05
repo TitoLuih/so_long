@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:35:12 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/26 12:41:39 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:20:28 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	readm_lines(char *line, t_game *game, int fd, char *map_name)
 		line = get_next_line(fd);
 	}
 	free(line);
-	game->map = ft_calloc(game->lines + 1, sizeof(char *));
+	game->map = ft_calloc(game->lines + 1, sizeof(char *)); 
 	game->map_copy = ft_calloc(game->lines + 1, sizeof(char *));
 	if (!game->map || !game->map_copy)
 		return (free(line), EXIT_FAILURE);

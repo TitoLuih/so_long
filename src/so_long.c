@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/05 11:53:36 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:23:21 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	init_struct(t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	*g;
-
 	if (argc != 2)
 		return (ft_printf("ERROR: not enough arguments"), EXIT_FAILURE);
 	if (ext_checker(argv[1]) == EXIT_FAILURE)
@@ -46,5 +45,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(g->mlx, &player_move, g);
 	mlx_loop(g->mlx);
 	mlx_terminate(g->mlx);
-	return (free_maps(g), EXIT_SUCCESS);
+	ft_printf("coño");
+	return (free_maps(g), EXIT_SUCCESS, ft_printf("ya"));
 }
