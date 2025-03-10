@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/10 16:58:35 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/10 19:01:53 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ void	object_checker(t_game *game, int i, int j)
 
 int check_wall(t_game *game, int i, int j)
 {
-    while (j < game->lines)
+    while (j <= game->lines)
     {
         if (i == game->columns)
         {
             i = 0;
             j++;
         }
-        if (i == 0 || i == game->columns - 2)
+        if (i == 0 || i == game->columns)
         {
-			if (game->map[j][i] != '1' || game->map[j][i] != '1')
-			    return (ft_printf("coño"), EXIT_FAILURE);
+			if (game->map[j][i] != '1')
+			    return (EXIT_FAILURE);
 		}
 		else if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
             return (EXIT_FAILURE);
