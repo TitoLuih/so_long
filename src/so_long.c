@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/05 18:23:21 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:58:23 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ int	main(int argc, char **argv)
 	mlx_key_hook(g->mlx, &player_move, g);
 	mlx_loop(g->mlx);
 	mlx_terminate(g->mlx);
-	ft_printf("coño");
-	return (free_maps(g), EXIT_SUCCESS, ft_printf("ya"));
+	return (free_maps(g), EXIT_SUCCESS);
 }

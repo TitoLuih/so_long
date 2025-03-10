@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/05 18:51:10 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:58:35 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,36 +42,35 @@ void	object_checker(t_game *game, int i, int j)
 	}
 }
 
-int	check_wall(t_game *game, int i, int j)
+int check_wall(t_game *game, int i, int j)
 {
-	while (j < game->lines - 1)
-	{
-		if (game->map[j][i] == '\n')
-		{
-			i = 0;
-			j++;
+    while (j < game->lines)
+    {
+        if (i == game->columns)
+        {
+            i = 0;
+            j++;
+        }
+        if (i == 0 || i == game->columns - 2)
+        {
+			if (game->map[j][i] != '1' || game->map[j][i] != '1')
+			    return (ft_printf("coño"), EXIT_FAILURE);
 		}
-		/*creo que el fallo esta aqui pero no estoy seguro
-		if (j == 0 || j == game->lines - 1)
-		{
-			if (game->map[j][i] != '1')
-				return (ft_printf("puta madre"), EXIT_FAILURE);
-		}
-		else */
-		if (game->map[j][0] != '1' && game->map[j][game->columns -1] != '1')
-				return (ft_printf("aaaaaaaaa"), EXIT_FAILURE);
-		else if (game->map[j][i] != '0' || game->map[j][i] != '1'
-				|| game->map[j][i] != 'C' || game->map[j][i] != 'P'
-				|| game->map[j][i] != 'E')
-			return (ft_printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),EXIT_FAILURE);
-		else
-			object_checker(game, i, j);
-		i++;
-	}
-	if (game->player != 1 || game->exit != 1 || game->coin == 0)
-		return (ft_printf("Numero de objetos invalido"), EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+		else if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
+            return (EXIT_FAILURE);
+        else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
+                 game->map[j][i] != 'C' && game->map[j][i] != 'P' && game->map[j][i] != 'E')
+            return (EXIT_FAILURE);
+        else
+            object_checker(game, i, j);
+        
+        i++;
+    }
+    if (game->player != 1 || game->exit != 1 || game->coin == 0)
+        return (ft_printf("Numero de objetos invalido"), EXIT_FAILURE);
+    return (EXIT_SUCCESS);
 }
+
 
 int	way_checker(t_game *game)
 {
