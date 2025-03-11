@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 17:37:54 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:07:56 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	init_struct(t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	*g;
+
 	if (argc != 2)
 		return (ft_printf("ERROR: not enough arguments\n"), EXIT_FAILURE);
 	if (ext_checker(argv[1]) == EXIT_FAILURE)

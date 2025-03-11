@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:21:05 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 17:37:15 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:07:00 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	images(t_game *g, int x, int y, void *img)
 
 static void	keypress(t_game *g, int x, int y, void *img)
 {
-	
 	if (g->map[y][x] == 'E' && g->coin == 0)
 	{
 		mlx_close_window(g->mlx);
@@ -55,17 +54,17 @@ static void	keypress(t_game *g, int x, int y, void *img)
 
 void	player_move(mlx_key_data_t keydata, void *param)
 {
-	t_game	*game;
+	t_game	*g;
 
-	game = param;
+	g = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(game->mlx);
+		mlx_close_window(g->mlx);
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
-		keypress(game, game->p_position.x, game->p_position.y - 1, game->i_player_r);
+		keypress(g, g->p_position.x, g->p_position.y - 1, g->i_player_r);
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
-		keypress(game, game->p_position.x - 1, game->p_position.y, game->i_player_l);
+		keypress(g, g->p_position.x - 1, g->p_position.y, g->i_player_l);
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
-		keypress(game, game->p_position.x, game->p_position.y + 1, game->i_player_r);
+		keypress(g, g->p_position.x, g->p_position.y + 1, g->i_player_r);
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
-		keypress(game, game->p_position.x + 1, game->p_position.y, game->i_player_r);
+		keypress(g, g->p_position.x + 1, g->p_position.y, g->i_player_r);
 }

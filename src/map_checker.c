@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 17:24:01 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:05:44 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	ext_checker(char *map_name)
 
 int	object_checker(t_game *game, int i, int j)
 {
-    while (j < game->lines - 1)
-    {
+	while (j < game->lines - 1)
+	{
 		if (i == game->columns - 1)
-		{			
+		{
 			i = 0;
 			j++;
 		}
@@ -52,27 +52,27 @@ int	object_checker(t_game *game, int i, int j)
 	return (EXIT_SUCCESS);
 }
 
-int check_wall(t_game *game, int i, int j)
+int	check_wall(t_game *game, int i, int j)
 {
-    while (j < game->lines - 1)
-    {
-        if (i == game->columns - 1)
-        {			
-            i = 0;
-            j++;
-        }
-        if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
-			    return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
+	while (j < game->lines - 1)
+	{
+		if (i == game->columns - 1)
+		{
+			i = 0;
+			j++;
+		}
+		if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
+			return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
 		else if (game->map[0][i] != '1' || game->map[game->lines - 1][i] != '1')
-            return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
-        else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
-                 game->map[j][i] != 'C' && game->map[j][i] != 'P' && game->map[j][i] != 'E')
-            return (EXIT_FAILURE);
-        i++;
-    }
-    return (EXIT_SUCCESS);
+			return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
+		else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
+			game->map[j][i] != 'C' && game->map[j][i] != 'P'
+			&& game->map[j][i] != 'E')
+			return (ft_printf("Invalid object"), EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }
-
 
 int	way_checker(t_game *game)
 {
@@ -99,7 +99,7 @@ int	way_checker(t_game *game)
 int	map_checker(t_game *game)
 {
 	if (game->lines == game->columns)
-		return (ft_printf ("Error, the map is not rectangular\n"), EXIT_FAILURE);
+		return (ft_printf ("The map is not rectangular\n"), EXIT_FAILURE);
 	if (check_wall(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
 	if (object_checker(game, 0, 0) == 1)
