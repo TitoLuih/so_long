@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 16:30:00 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:24:01 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int check_wall(t_game *game, int i, int j)
             j++;
         }
         if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
-			    return (EXIT_FAILURE);
+			    return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
 		else if (game->map[0][i] != '1' || game->map[game->lines - 1][i] != '1')
-            return (EXIT_FAILURE);
+            return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
         else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
                  game->map[j][i] != 'C' && game->map[j][i] != 'P' && game->map[j][i] != 'E')
             return (EXIT_FAILURE);

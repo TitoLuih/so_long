@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 16:29:32 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:37:54 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 		return (free_maps(g), EXIT_FAILURE);
 	if (map_checker(g) == 1)
 		return (free_maps(g), EXIT_FAILURE);
-	g->mlx = mlx_init(50 * g->columns, 50 * g->lines, "SO_LONG", false);
+	g->mlx = mlx_init(64 * g->columns, 64 * g->lines, "SO_LONG", false);
 	if (!g->mlx)
 		return (free_maps(g), EXIT_FAILURE);
 	if (text_to_img(g) == 1 || image_to_window(g) == 1)
