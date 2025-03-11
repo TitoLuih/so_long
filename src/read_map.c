@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:35:12 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/05 18:20:28 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:29:42 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	readm_lines(char *line, t_game *game, int fd, char *map_name)
 	fd = open(map_name, 0);
 	line = get_next_line(fd);
 	if (line == NULL)
-		return (ft_printf("ERROR: El mapa esta vacio"), EXIT_FAILURE);
+		return (ft_printf("ERROR: The map is empty\n"), EXIT_FAILURE);
 	while (line != NULL)
 	{
 		game->lines++;
@@ -98,7 +98,7 @@ int	read_map(t_game *game, char *map_name)
 	line = NULL;
 	fd = open(map_name, 0);
 	if (fd < 0)
-		return (ft_printf("Error: No se pudo abrir el mapa\n"), EXIT_FAILURE);
+		return (ft_printf("Error: could not open the map\n"), EXIT_FAILURE);
 	close(fd);
 	if (readm_lines(line, game, fd, map_name) == 1)
 		return (EXIT_FAILURE);

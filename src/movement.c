@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:21:05 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/02/26 12:11:27 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:28:34 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static void	images(t_game *g, int x, int y, void *img)
 static void	keypress(t_game *g, int x, int y, void *img)
 {
 	g->moves++;
-	ft_printf("Número de movimientos: %d\n", g->moves);
+	ft_printf("Number of movements: %d\n", g->moves);
 	if (g->map[y][x] == 'E' && g->coin == 0)
 	{
 		mlx_close_window(g->mlx);
-		ft_printf("\nHas ganado\n");
+		ft_printf("\nYou have won\n");
 	}
 	else if (g->map[y][x] != '1')
 		images (g, x, y, img);

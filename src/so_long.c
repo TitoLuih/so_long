@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 16:16:21 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:29:32 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ int	main(int argc, char **argv)
 {
 	t_game	*g;
 	if (argc != 2)
-		return (ft_printf("ERROR: not enough arguments"), EXIT_FAILURE);
+		return (ft_printf("ERROR: not enough arguments\n"), EXIT_FAILURE);
 	if (ext_checker(argv[1]) == EXIT_FAILURE)
-		return (ft_printf("ERROR: not the correct extension"), EXIT_FAILURE);
+		return (ft_printf("ERROR: not the correct extension\n"), EXIT_FAILURE);
 	g = ft_calloc(1, sizeof(t_game));
 	init_struct(g);
 	if (read_map(g, argv[1]) == EXIT_FAILURE)
-		return (ft_printf("falla read_map"), free_maps(g), EXIT_FAILURE);
+		return (free_maps(g), EXIT_FAILURE);
 	if (map_checker(g) == 1)
-		return (ft_printf("falla map_checker"),free_maps(g), EXIT_FAILURE);
+		return (free_maps(g), EXIT_FAILURE);
 	g->mlx = mlx_init(50 * g->columns, 50 * g->lines, "SO_LONG", false);
 	if (!g->mlx)
 		return (free_maps(g), EXIT_FAILURE);
 	if (text_to_img(g) == 1 || image_to_window(g) == 1)
-		return (ft_printf("falla en img"),free_maps(g), ft_printf("image error\n"), EXIT_FAILURE);
+		return (free_maps(g), ft_printf("Image error\n"), EXIT_FAILURE);
 	mlx_key_hook(g->mlx, &player_move, g);
 	mlx_loop(g->mlx);
 	mlx_terminate(g->mlx);

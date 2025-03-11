@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 16:22:11 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:30:00 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ int	way_checker(t_game *game)
 	y = game->p_position.y;
 	if (game->map[x + 1][y] == '1' && game->map[x - 1][y] == '1'
 	&& game->map[x][y + 1] == '1' && game->map[x][y - 1] == '1' )
-		return (ft_printf("falla player\n"),EXIT_FAILURE);
+		return (ft_printf("Invalid position of the player\n"), EXIT_FAILURE);
 	else
 	{
 		x = game->e_position.x;
 		y = game->e_position.y;
 		if (game->map[x + 1][y] == '1' && game->map[x - 1][y] == '1'
 			&& game->map[x][y + 1] == '1' && game->map[x][y - 1] == '1' )
-			return (ft_printf("falla exit\n"),EXIT_FAILURE);
+			return (ft_printf("Invalid position of the exit\n"), EXIT_FAILURE);
 		else
 			return (EXIT_SUCCESS);
 	}
@@ -99,14 +99,14 @@ int	way_checker(t_game *game)
 int	map_checker(t_game *game)
 {
 	if (game->lines == game->columns)
-		return (ft_printf ("Error, the map is not rectangular"), EXIT_FAILURE);
+		return (ft_printf ("Error, the map is not rectangular\n"), EXIT_FAILURE);
 	if (check_wall(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
 	if (object_checker(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
 	if (game->player != 1 || game->exit != 1 || game->coin == 0)
-		return (ft_printf("Invalid number of objects"), EXIT_FAILURE);
+		return (ft_printf("Invalid number of objects\n"), EXIT_FAILURE);
 	if (way_checker(game) == 1)
-		return (ft_printf("Invalid positions\n"),EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
