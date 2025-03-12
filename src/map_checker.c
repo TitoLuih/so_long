@@ -6,12 +6,12 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 18:58:37 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:59:43 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-//comprobar las filas menores que cero y las colummnas tambien
+//!!minor to 0 lines and columns not necesary to check?
 void	flood_fill(t_game *game, t_point pos)
 {
 	if (pos.x >= game->columns || pos.y >= game->lines
