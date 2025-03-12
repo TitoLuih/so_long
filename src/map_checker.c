@@ -6,12 +6,32 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 15:40:42 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:58:37 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+//comprobar las filas menores que cero y las colummnas tambien
+void	flood_fill(t_game *game, t_point pos)
+{
+	if (pos.x >= game->columns || pos.y >= game->lines
+		|| game->map_copy[pos.y][pos.x] == '1'
+		|| game->map_copy[pos.y][pos.x] == '*')
+		return ;
+	if (game->map_copy[pos.y][pos.x] == 'C')
+		game->c_copy++;
+	if (game->map_copy[pos.y][pos.x] == 'E')
+	{
+		game->e_copy++;
+		game->e_position.x = pos.x;
+		game->e_position.y = pos.y;
+	}
+	game->map_copy[pos.y][pos.x] = '*';
+	flood_fill(game, (t_point){pos.x + 1, pos.y});
+	flood_fill(game, (t_point){pos.x - 1, pos.y});
+	flood_fill(game, (t_point){pos.x, pos.y - 1});
+	flood_fill(game, (t_point){pos.x, pos.y + 1});
+}
 
 int	object_checker(t_game *game, int i, int j)
 {
@@ -24,17 +44,17 @@ int	object_checker(t_game *game, int i, int j)
 		}
 		if (game->map[j][i] == 'C')
 			game->coin++;
-		else if (game->map[j][i] == 'P')
-		{
-			game->p_position.x = i;
-			game->p_position.y = j;
-			game->player++;
-		}
 		else if (game->map[j][i] == 'E')
 		{
 			game->e_position.x = i;
 			game->e_position.y = j;
 			game->exit++;
+		}
+		else if (game->map[j][i] == 'P')
+		{
+			game->p_position.x = i;
+			game->p_position.y = j;
+			game->player++;
 		}
 		i++;
 	}
@@ -51,7 +71,7 @@ int	check_wall(t_game *game, int i, int j)
 			j++;
 		}
 		if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
-			return (ft_error("The map is not enclosed\n"), EXIT_FAILURE);
+			return (ft_error("The map is not enclosed\n"));
 		else if (game->map[0][i] != '1' || game->map[game->lines - 1][i] != '1')
 			return (ft_error("The map is not enclosed\n"));
 		else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
@@ -93,9 +113,12 @@ int	map_checker(t_game *game)
 		return (EXIT_FAILURE);
 	if (object_checker(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
+	flood_fill(game, game->p_position);
 	if (game->player != 1 || game->exit != 1 || game->coin == 0)
 		return (ft_error("Invalid number of objects\n"));
-	if (way_checker(game) == 1)
-		return (EXIT_FAILURE);
+	if (game->exit != game->e_copy)
+		return (ft_error("Exit not reachable\n"));
+	if (game->coin != game->c_copy)
+		return (ft_error("Coin not reachable\n"));
 	return (EXIT_SUCCESS);
 }
