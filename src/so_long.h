@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 16:01:26 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:22:31 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ typedef struct s_game
 	mlx_image_t		*i_coin;
 	mlx_texture_t	*t_floor;
 	mlx_image_t		*i_floor;
-	mlx_texture_t	*t_player_r;
-	mlx_image_t		*i_player_r;	
-	mlx_texture_t	*t_player_l;
-	mlx_image_t		*i_player_l;
+	mlx_texture_t	*t_player;
+	mlx_image_t		*i_player;	
 	mlx_texture_t	*t_open_exit;
 	mlx_image_t		*i_open_exit;
 	mlx_texture_t	*t_closed_exit;

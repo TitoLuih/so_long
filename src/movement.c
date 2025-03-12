@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:21:05 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 18:07:00 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:24:49 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	player_move(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(g->mlx);
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
-		keypress(g, g->p_position.x, g->p_position.y - 1, g->i_player_r);
+		keypress(g, g->p_position.x, g->p_position.y - 1, g->i_player);
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
-		keypress(g, g->p_position.x - 1, g->p_position.y, g->i_player_l);
+		keypress(g, g->p_position.x - 1, g->p_position.y, g->i_player);
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
-		keypress(g, g->p_position.x, g->p_position.y + 1, g->i_player_r);
+		keypress(g, g->p_position.x, g->p_position.y + 1, g->i_player);
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
-		keypress(g, g->p_position.x + 1, g->p_position.y, g->i_player_r);
+		keypress(g, g->p_position.x + 1, g->p_position.y, g->i_player);
 }

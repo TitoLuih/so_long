@@ -6,12 +6,12 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 18:59:43 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:20:20 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-//!!minor to 0 lines and columns not necesary to check?
+
 void	flood_fill(t_game *game, t_point pos)
 {
 	if (pos.x >= game->columns || pos.y >= game->lines
@@ -71,9 +71,9 @@ int	check_wall(t_game *game, int i, int j)
 			j++;
 		}
 		if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
-			return (ft_error("The map is not enclosed\n"));
+			return (ft_error("The map is not enclosed"));
 		else if (game->map[0][i] != '1' || game->map[game->lines - 1][i] != '1')
-			return (ft_error("The map is not enclosed\n"));
+			return (ft_error("The map is not enclosed"));
 		else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
 			game->map[j][i] != 'C' && game->map[j][i] != 'P'
 			&& game->map[j][i] != 'E')
@@ -92,14 +92,14 @@ int	way_checker(t_game *game)
 	y = game->p_position.y;
 	if (game->map[x + 1][y] == '1' && game->map[x - 1][y] == '1'
 	&& game->map[x][y + 1] == '1' && game->map[x][y - 1] == '1' )
-		return (ft_error("Invalid position of the player\n"));
+		return (ft_error("Invalid position of the player"));
 	else
 	{
 		x = game->e_position.x;
 		y = game->e_position.y;
 		if (game->map[x + 1][y] == '1' && game->map[x - 1][y] == '1'
 			&& game->map[x][y + 1] == '1' && game->map[x][y - 1] == '1' )
-			return (ft_error("Invalid position of the exit\n"));
+			return (ft_error("Invalid position of the exit"));
 		else
 			return (EXIT_SUCCESS);
 	}
@@ -108,17 +108,17 @@ int	way_checker(t_game *game)
 int	map_checker(t_game *game)
 {
 	if (game->lines == game->columns)
-		return (ft_error ("The map is not rectangular\n"));
+		return (ft_error ("The map is not rectangular"));
 	if (check_wall(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
 	if (object_checker(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
 	flood_fill(game, game->p_position);
 	if (game->player != 1 || game->exit != 1 || game->coin == 0)
-		return (ft_error("Invalid number of objects\n"));
+		return (ft_error("Invalid number of objects"));
 	if (game->exit != game->e_copy)
-		return (ft_error("Exit not reachable\n"));
+		return (ft_error("Exit not reachable"));
 	if (game->coin != game->c_copy)
-		return (ft_error("Coin not reachable\n"));
+		return (ft_error("Coin not reachable"));
 	return (EXIT_SUCCESS);
 }
