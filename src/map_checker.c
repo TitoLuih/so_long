@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 13:15:37 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:22:14 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ int	check_wall(t_game *game, int i, int j)
 			j++;
 		}
 		if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
-			return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
+			return (ft_error("The map is not enclosed\n"));
 		else if (game->map[0][i] != '1' || game->map[game->lines - 1][i] != '1')
-			return (ft_printf("The map is not enclosed\n"), EXIT_FAILURE);
+			return (ft_error("The map is not enclosed\n"));
 		else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
 			game->map[j][i] != 'C' && game->map[j][i] != 'P'
 			&& game->map[j][i] != 'E')
-			return (ft_printf("Invalid object"), EXIT_FAILURE);
+			return (ft_error("Invalid object"));
 		i++;
 	}
 	return (EXIT_SUCCESS);
@@ -83,14 +83,14 @@ int	way_checker(t_game *game)
 	y = game->p_position.y;
 	if (game->map[x + 1][y] == '1' && game->map[x - 1][y] == '1'
 	&& game->map[x][y + 1] == '1' && game->map[x][y - 1] == '1' )
-		return (ft_printf("Invalid position of the player\n"), EXIT_FAILURE);
+		return (ft_error("Invalid position of the player\n"));
 	else
 	{
 		x = game->e_position.x;
 		y = game->e_position.y;
 		if (game->map[x + 1][y] == '1' && game->map[x - 1][y] == '1'
 			&& game->map[x][y + 1] == '1' && game->map[x][y - 1] == '1' )
-			return (ft_printf("Invalid position of the exit\n"), EXIT_FAILURE);
+			return (ft_error("Invalid position of the exit\n"));
 		else
 			return (EXIT_SUCCESS);
 	}
@@ -99,13 +99,13 @@ int	way_checker(t_game *game)
 int	map_checker(t_game *game)
 {
 	if (game->lines == game->columns)
-		return (ft_printf ("The map is not rectangular\n"), EXIT_FAILURE);
+		return (ft_error ("The map is not rectangular\n"));
 	if (check_wall(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
 	if (object_checker(game, 0, 0) == 1)
 		return (EXIT_FAILURE);
 	if (game->player != 1 || game->exit != 1 || game->coin == 0)
-		return (ft_printf("Invalid number of objects\n"), EXIT_FAILURE);
+		return (ft_error("Invalid number of objects\n"));
 	if (way_checker(game) == 1)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

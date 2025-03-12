@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:17 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/11 18:07:48 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:19:23 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ int		map_checker(t_game *game);
 int		text_to_img(t_game *game);
 int		image_to_window(t_game *game);
 void	player_move(mlx_key_data_t keydata, void *param);
+int		ft_error(char *str);
 
 #endif

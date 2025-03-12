@@ -17,6 +17,7 @@ SRCS =	./src/map_checker.c\
 		./src/so_long.c\
 		./src/movement.c\
 		./src/text_to_img.c\
+		./src/error.c\
 
 SRCDIR = src/
 OBJDIR = obj/
