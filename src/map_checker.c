@@ -6,23 +6,12 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:01:26 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 15:22:14 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:40:42 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ext_checker(char *map_name)
-{
-	int	i;
-
-	i = ft_strlen(map_name);
-	if ((map_name[i - 1] == 'r' && map_name[i - 2] == 'e')
-		&& (map_name[i - 3] == 'b' && map_name[i - 4] == '.'))
-		return (EXIT_SUCCESS);
-	else
-		return (EXIT_FAILURE);
-}
 
 int	object_checker(t_game *game, int i, int j)
 {
@@ -62,7 +51,7 @@ int	check_wall(t_game *game, int i, int j)
 			j++;
 		}
 		if (game->map[j][0] != '1' || game->map[j][game->columns - 1] != '1')
-			return (ft_error("The map is not enclosed\n"));
+			return (ft_error("The map is not enclosed\n"), EXIT_FAILURE);
 		else if (game->map[0][i] != '1' || game->map[game->lines - 1][i] != '1')
 			return (ft_error("The map is not enclosed\n"));
 		else if (game->map[j][i] != '0' && game->map[j][i] != '1' &&
