@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:02:43 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 20:19:19 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:28:30 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_error(char *str)
 {
-	ft_printf("ERROR:\n");
-	ft_printf(str, "\n");
+	ft_printf("ERROR:\n%s\n", str);
 	return (EXIT_FAILURE);
 }
