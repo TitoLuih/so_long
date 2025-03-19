@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 16:00:31 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 20:20:42 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:17:25 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	init_struct(t_game *game)
 	game->coin = 0;
 	game->exit = 0;
 	game->moves = 0;
+	game->c_copy = 0;
+	game->e_copy = 0;
 	game->player = 0;
 }
 
