@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:35:12 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/03/12 20:20:37 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:10:03 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	readm_columns(char *line, t_game *game, int fd, char *map_name)
 
 static int	readm_lines(char *line, t_game *game, int fd, char *map_name)
 {
-	fd = open(map_name, 0);
+	fd = open(map_name,	 0);
 	line = get_next_line(fd);
 	if (line == NULL)
 		return (ft_error("The map is empty"));
