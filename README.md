@@ -1,97 +1,110 @@
-# so_long
+# 🧱 so_long
 
-> Proyecto de gráficos básicos en 2D del curriculum de 42
-
-## 🧩 Descripción
-
-`so_long` es un pequeño videojuego en 2D desarrollado como parte del programa 42. El objetivo es familiarizarse con el uso de una librería gráfica sencilla (MiniLibX) y aplicar conocimientos de programación estructurada y manejo de eventos.
-
-El jugador debe moverse por un mapa cerrado, recolectar todos los objetos y llegar a la salida para ganar. El juego termina si el jugador alcanza la salida sin haber recogido todos los objetos.
+> Proyecto de programación gráfica en C con MiniLibX - 42 Cursus
 
 ---
 
-## 🎯 Objetivos
+## 🎮 Descripción
 
-- Cargar y validar mapas desde archivos `.ber`.
-- Renderizar gráficos 2D utilizando MiniLibX.
-- Detectar y gestionar eventos de teclado.
-- Implementar lógica de movimiento y condiciones de victoria.
-- Manejar errores y memoria correctamente.
+**so_long** es un juego en 2D de un solo jugador, desarrollado en **C** utilizando la **MiniLibX**, una pequeña biblioteca gráfica proporcionada por la Escuela 42.
 
----
-
-## 🛠️ Tecnologías
-
-- C
-- MiniLibX (librería gráfica simple proporcionada por 42)
-- macOS / Linux
+El objetivo del juego es **recoger todos los objetos**, **llegar a la salida** y evitar enemigos (si se implementan).  
+El mapa es leído desde un archivo `.ber` y debe estar rodeado de paredes.
 
 ---
 
-## 📦 Instalación
+## 🕹️ Controles
 
-1. Clona el repositorio:
-```bash
-git clone https://github.com/tu_usuario/so_long.git
-cd so_long
+El personaje se mueve usando las **flechas del teclado**:
+
+- ⬆️ Flecha arriba → Mover hacia **arriba**
+- ⬇️ Flecha abajo → Mover hacia **abajo**
+- ⬅️ Flecha izquierda → Mover hacia **la izquierda**
+- ➡️ Flecha derecha → Mover hacia **la derecha**
+- ❌ `ESC` → Cierra el juego
+
+Cada movimiento válido incrementa el contador de movimientos, que se muestra por pantalla o en consola.
+
+---
+
+## 🧩 Reglas del juego
+
+- El jugador (`P`) debe recoger todos los objetos (`C`) y llegar a la salida (`E`).
+- El mapa debe tener al menos:
+  - 1 jugador (`P`)
+  - 1 salida (`E`)
+  - 1 coleccionable (`C`)
+- El mapa debe estar cerrado por muros (`1`) y no puede tener líneas irregulares.
+- Los espacios vacíos se representan con `0`.
+- Si el mapa no es válido, el programa debe mostrar un mensaje de error y salir correctamente.
+
+---
+
+## 📁 Formato del mapa
+
+Archivo con extensión `.ber`. Ejemplo:
+
+```
+111111
+1P0C01
+100001
+1C0E11
+111111
 ```
 
-2. Compila el proyecto:
+Significado:
+- `1` → Muro
+- `0` → Espacio vacío
+- `P` → Jugador
+- `C` → Coleccionable
+- `E` → Salida
+
+---
+
+## 📦 Compilación
+
 ```bash
 make
 ```
 
-> Asegúrate de tener MiniLibX y las dependencias necesarias instaladas (como X11 en Linux).
+Esto generará el ejecutable del juego.
 
 ---
 
-## 🕹️ Cómo jugar
-
-Ejecuta el juego con un mapa `.ber`:
+## 🚀 Ejecución
 
 ```bash
-./so_long maps/mapa1.ber
+./so_long maps/mapa.ber
 ```
 
-**Controles:**
-- `W` / `A` / `S` / `D` — Moverse
-- `ESC` — Salir del juego
+Asegúrate de tener un archivo `.ber` válido en la carpeta `maps/` o la ruta que utilices.
 
 ---
 
-## 🗺️ Formato del Mapa
+## 🎨 Recomendaciones gráficas
 
-- `1` → Pared
-- `0` → Suelo
-- `P` → Posición inicial del jugador
-- `C` → Coleccionable
-- `E` → Salida
-
-Ejemplo:
-```
-11111
-1P0C1
-10001
-1C0E1
-11111
-```
+- Se recomienda un tamaño uniforme por bloque (por ejemplo, 64x64 px).
+- Asegúrate de cargar bien las texturas antes de comenzar el bucle del juego.
 
 ---
 
-## ✅ Reglas de Validación
+## 🔍 Cosas a verificar
 
-- El mapa debe ser rectangular.
-- El mapa debe estar completamente cerrado por paredes (`1`).
-- Debe contener exactamente un `P`, al menos un `C` y una `E`.
-
----
-
-## 📄 Licencia
-
-Este proyecto es parte del programa 42 y está destinado exclusivamente a fines educativos.
+- ❗ Gestión de errores si el archivo no existe o es inválido.
+- ✅ Liberación de memoria correctamente al cerrar el juego.
+- 🧠 Validación del mapa antes de renderizar.
+- 🎯 El jugador no debe poder moverse a través de muros.
 
 ---
 
-## ✍️ Autor
+## 📌 Nota
 
-lruiz-to
+Este proyecto te enseña sobre:
+- Lectura y validación de archivos
+- Programación de eventos con MiniLibX
+- Gestión de memoria
+- Bucle de renderizado y dibujo de sprites
+
+---
+
+¡Disfruta programando y jugando tu propio mini-juego 2D! 🎉
